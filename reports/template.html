@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<title>report</title>
+</head>
+<body>
+
+<h1>Report</h1>
+
+<table>
+    <tr><td>start time:</td><td>{{data['start']}}</td></tr>
+    <tr><td>end time:</td><td>{{data['end']}}</td></tr>
+</table>
+
+<h2>Caveats</h2>
+<ul>
+<li>Pre fees and slippage</li>
+</ul>
+
+<h2>Strategies</h2>
+
+{% for strategy in data['strategies'] %}
+{{strategy}}
+{% endfor %}
+
+<h2>Aggregated signals</h2>
+<img src='data:image/png;base64,{{data['longs']}}'/>
+<img src='data:image/png;base64,{{data['shorts']}}'/>
+
+<h2>Outcome distribution</h2>
+<img src='data:image/png;base64,{{data['longs_distn']}}'/>
+<img src='data:image/png;base64,{{data['shorts_distn']}}'/>
+
+<h2>Individual signals</h2>
+{% for figure in data['figures'] %}
+<img src='data:image/png;base64,{{figure}}'/>
+{% endfor %}
+
+</body>
+</html>
+
